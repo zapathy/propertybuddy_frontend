@@ -10,11 +10,12 @@
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
-        #map {
+
+        .halfheight {
             height: 50%;
         }
 
-        .map {
+        .fullheight {
             height: 100%;
         }
 
@@ -24,43 +25,104 @@
             margin: 0;
             padding: 0;
         }
+
+        .hide {
+            height: 0 !important;
+            display: block !important;
+        }
+
+        .fullwidth {
+            width: 100%;
+        }
     </style>
     <title>Title</title>
 </head>
 <body>
-<div class="map container">
-    <div class="row">
-
-    </div>
+<div class="fullheight container">
     <div class="page-header">
         <h1>Property Buddy</h1>
     </div>
 
-    <div class="card-header">
-        <a class="btn" data-toggle="collapse" href="#db-controls"
-           aria-expanded="false" aria-controls="db-controls">Database test controls</a>
-    </div>
-    <div id="db-controls" class="collapse card-body jumbotron">
-        <p class="">This is some random text about my project</p>
-        <a href="#" id="dbtestfill" class="btn btn-default btn-lg btn-primary" role="button">Fill db test data</a>
-        <button type="submit" class="btn btn-danger">Danger button</button>
-        <input type="button" value="Info" class="btn btn-info">
-    </div>
+    <div class="row">
 
-
-    <div id="map" class="map card">
-        <div class="card-header">
-            <a class="btn"></a>
+        <div class="col-3">
+            <div class="card-header">
+                <p>Property list</p>
+            </div>
+            <div class="card-body">
+                <input id="propertylistvalue" list="propertylist">
+                <datalist name="propertylist" id="propertylist"></datalist>
+                <input id="showpropertyinfo" type="button" value="Show Details">
+            </div>
         </div>
-        <div class="map card-body"></div>
+        <div class="col-9">
+            <div class="card-header">
+                <p>Details</p>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <input id="propertyid" readonly>
+                    </div>
+                    <div class="row">
+                        <input id="fullstreetname" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+    <div class="row halfheight">
+        <div id="map-case" class="col-11 fullheight">
+            <div id="api-map-holder" class="fullheight card-body">
+                <div id="actual-map" class="fullheight card"></div>
+            </div>
+            <div id="embedded-map-holder" class="fullheight fullwidth card-body"></div>
+            <div id="asdf"></div>
+        </div>
+        <div class="col-1">
+            <button id="clear-map">Clear</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card-header">
+                <p>Districts</p>
+            </div>
+            <div id="district-list" class="card-body"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="card-header">
+                <a class="btn" data-toggle="collapse" href="#db-controls"
+                   aria-expanded="false" aria-controls="db-controls">Database test controls</a>
+            </div>
+            <div id="db-controls" class="collapse card-body">
+                <p class="">This is some random text about my project</p>
+                <a href="#" id="dbtestfill" class="btn btn-default btn-lg btn-primary" role="button">Fill db test
+                    data</a>
+                <input id="dbgetall" type="button" value="Get all data" class="btn btn-info">
+                <button type="submit" class="btn btn-danger">Danger button</button>
+            </div>
+        </div>
+    </div>
+    <!--    <iframe width="600" height="450" frameborder="0" style="border:0"-->
+    <!--            src="https://www.google.com/maps/embed/v1/place?q=Keraniganj%2C%20Bangladesh&key=AIzaSyD6-rOeIyOT0SDVyM3LzqVrG2AS9HhnGi0" allowfullscreen></iframe>-->
 
 
 </div>
 
-<script src="maps.js" async defer></script>
-<script src="db.js" async defer></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6-rOeIyOT0SDVyM3LzqVrG2AS9HhnGi0&callback=initMap"
+
+<script src="districts.js" async defer></script>
+<script src="support.js" async defer></script>
+<script src="property-list.js" async defer></script>
+<script src="db-controls.js" async defer></script>
+<script src="maps-api.js" async defer></script>
+<script src="map-controls.js" async defer></script>
+<script src="main.js" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?
+key=AIzaSyD6-rOeIyOT0SDVyM3LzqVrG2AS9HhnGi0&callback=initMap&libraries=places"
         async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
