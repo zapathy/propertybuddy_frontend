@@ -48,7 +48,6 @@ selectPropertyFromList = () => {
 };
 
 showPropertyInfo = () => {
-    console.log(selectedProperty);
     document.getElementById('propertyid').value = selectedProperty['id'];
     let streetnamestring = romanize(selectedProperty['district']) + ' .ker ';
     if (selectedProperty['streetname'] != null) {
