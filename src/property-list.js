@@ -24,9 +24,14 @@ populatePropertyList = () => {
     let propertyListElement = document.getElementById('propertylist');
     propertyData.forEach(property => {
         let optionElement = document.createElement('option');
-        optionElement.text = property['district'] + ' .ker ' +
-            property['streetname'] + property['streetsuffix'];
+        let streetnamestring = romanize(property['district']) + ' .ker ';
+        if (property['streetname'] != null) {
+            streetnamestring += property['streetname'] + ' ' + property['streetsuffix'];
+        } else {
+            streetnamestring+= property['name'];
+        }
         optionElement.value = property['id'];
+        optionElement.text = streetnamestring;
         propertyListElement.appendChild(optionElement);
     });
 };
