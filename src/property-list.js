@@ -6,7 +6,7 @@ handlePropertyList = () => {
 };
 
 getPropertyData = () => {
-    const url = 'http://localhost:8080/properties';
+    const url = 'https://propertybuddy-database.herokuapp.com/properties/all';
 
     fetch(url, {
         method: "GET",
@@ -24,7 +24,8 @@ populatePropertyList = () => {
     let propertyListElement = document.getElementById('propertylist');
     propertyData.forEach(property => {
         let optionElement = document.createElement('option');
-        optionElement.text = property['district'] + ' .ker ' + property['street'];
+        optionElement.text = property['district'] + ' .ker ' +
+            property['streetname'] + property['streetsuffix'];
         optionElement.value = property['id'];
         propertyListElement.appendChild(optionElement);
     });
@@ -45,7 +46,8 @@ showPropertyInfo = () => {
     console.log(selectedProperty);
     document.getElementById('propertyid').value = selectedProperty['id'];
     document.getElementById('fullstreetname').value =
-        selectedProperty['district'] + ' .ker ' + selectedProperty['street'];
+        romanize(selectedProperty['district']) + ' .ker ' + selectedProperty['streetname'] +
+        selectedProperty['streetsuffix'];
     let address = 'Budapest ' + document.getElementById('fullstreetname').value;
     codeAddress(address);
 };
