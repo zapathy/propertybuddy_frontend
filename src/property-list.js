@@ -45,9 +45,13 @@ selectPropertyFromList = () => {
 showPropertyInfo = () => {
     console.log(selectedProperty);
     document.getElementById('propertyid').value = selectedProperty['id'];
-    document.getElementById('fullstreetname').value =
-        romanize(selectedProperty['district']) + ' .ker ' + selectedProperty['streetname'] +
-        selectedProperty['streetsuffix'];
+    let streetnamestring = romanize(selectedProperty['district']) + ' .ker ';
+    if (selectedProperty['streetname'] != null) {
+        streetnamestring += selectedProperty['streetname'] + selectedProperty['streetsuffix'];
+    } else {
+        streetnamestring+= selectedProperty['name'];
+    }
+    document.getElementById('fullstreetname').value = streetnamestring;
     let address = 'Budapest ' + document.getElementById('fullstreetname').value;
     codeAddress(address);
 };
