@@ -6,6 +6,7 @@ var embeddedMapHolder, apiMapHolder, mapCase;
 // src="https://www.google.com/maps/embed/v1/place?q=Keraniganj%2C%20Bangladesh&key=AIzaSyD6-rOeIyOT0SDVyM3LzqVrG2AS9HhnGi0"
 
 createEmbeddedMapElement = (place) => {
+    clearAllMarkers();
     let iFrameElement = document.createElement('iframe');
     iFrameElement.setAttribute('width', "100%");
     iFrameElement.setAttribute('height', "100%");
@@ -43,6 +44,7 @@ setMapToEmbed = (yes) => {
 };
 
 function codeAddress(address) {
+    clearAllMarkers();
     //In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
     geocoder.geocode({'address': address}, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {

@@ -62,9 +62,9 @@
             <div class="card-body">
                 <div class="container">
                     <div class="row">
+                        <p>Id: </p>
                         <input id="propertyid" readonly>
-                    </div>
-                    <div class="row">
+                        <p> Address:</p>
                         <input id="fullstreetname" readonly>
                     </div>
                 </div>
@@ -73,15 +73,16 @@
 
     </div>
     <div class="row halfheight">
-        <div id="map-case" class="col-11 fullheight">
+        <div id="map-case" class="col-10 fullheight">
             <div id="api-map-holder" class="fullheight card-body">
                 <div id="actual-map" class="fullheight card"></div>
             </div>
             <div id="embedded-map-holder" class="fullheight fullwidth card-body"></div>
-            <div id="asdf"></div>
         </div>
-        <div class="col-1">
-            <button id="clear-map">Clear</button>
+        <div class="col-2">
+            <select id="pricelist" multiple="multiple" readonly>
+
+            </select>
         </div>
     </div>
     <div class="row">
@@ -119,7 +120,6 @@
 <script src="src/property-list.js" async defer></script>
 <script src="src/db-controls.js" async defer></script>
 <script src="src/maps-api.js" async defer></script>
-<script src="src/map-controls.js" async defer></script>
 <script src="src/main.js" async defer></script>
 <script src="https://maps.googleapis.com/maps/api/js?
 key=AIzaSyD6-rOeIyOT0SDVyM3LzqVrG2AS9HhnGi0&callback=initMap&libraries=places"

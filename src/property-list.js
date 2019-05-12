@@ -48,6 +48,7 @@ selectPropertyFromList = () => {
 };
 
 showPropertyInfo = () => {
+    console.log(selectedProperty);
     document.getElementById('propertyid').value = selectedProperty['id'];
     let streetnamestring = romanize(selectedProperty['district']) + ' .ker ';
     if (selectedProperty['streetname'] != null) {
@@ -56,6 +57,11 @@ showPropertyInfo = () => {
         streetnamestring+= selectedProperty['name'];
     }
     document.getElementById('fullstreetname').value = streetnamestring;
+    for (price of selectedProperty['pricehistory']) {
+        let optionElement = document.createElement('option');
+        optionElement.text = price['datetime'] + ' - ' + price['pricehuf'];
+        document.getElementById('pricelist').appendChild(optionElement);
+    }
     let address = 'Budapest ' + document.getElementById('fullstreetname').value;
     codeAddress(address);
 };
