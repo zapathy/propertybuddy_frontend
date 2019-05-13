@@ -56,11 +56,13 @@ showPropertyInfo = () => {
     } else {
         streetnamestring+= selectedProperty['name'];
     }
+    let pricelist = document.getElementById('pricelist');
+    pricelist.innerHTML = '';
     document.getElementById('fullstreetname').value = streetnamestring;
     for (price of selectedProperty['pricehistory']) {
         let optionElement = document.createElement('option');
         optionElement.text = price['datetime'] + ' - ' + price['pricehuf'];
-        document.getElementById('pricelist').appendChild(optionElement);
+        pricelist.appendChild(optionElement);
     }
     let address = 'Budapest ' + document.getElementById('fullstreetname').value;
     codeAddress(address);
