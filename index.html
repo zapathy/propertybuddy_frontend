@@ -39,86 +39,76 @@
 </head>
 <body>
 <div class="fullheight container">
-    <div class="page-header">
+    <div class="page-header" id="title-header">
         <h1>Property Buddy</h1>
     </div>
-
-    <div class="row">
-
-        <div class="col-3">
-            <div class="card-header">
-                <p>Property list</p>
+    <div class="row" id="districts-row">
+        <div class="col-12" id="districts-col">
+            <div class="card-header" id="districts-title-card">
+                <p>Districts</p>
             </div>
-            <div class="card-body">
-                <input id="propertylistvalue" list="propertylist">
-                <datalist name="propertylist" id="propertylist"></datalist>
-                <input id="showpropertyinfo" type="button" value="Show Details">
-            </div>
+            <div id="districts-list" class="card-body"></div>
         </div>
-        <div class="col-9">
-            <div class="card-header">
-                <p>Details</p>
-            </div>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <p>Id: </p>
-                        <input id="propertyid" readonly>
-                        <p> Address:</p>
-                        <input id="fullstreetname" readonly>
+    </div>
+    <div class="row fullheight" id="main-content-row">
+        <div class="col-9 fullheight" id="selection-and-map-col">
+            <div class="row" id="selection-row">
+                <div class="col-4" id="propertylist-col">
+                    <div class="card-header fullwidth" id="propertylist-cardheader">
+                        <p>Property list</p>
                     </div>
+                    <div class="card-body" id="propertylist-cardbody">
+                        <input id="propertylistvalue" list="propertylist">
+                        <datalist name="propertylist" id="propertylist"></datalist>
+                        <input id="showpropertyinfo" type="button" value="Show Details">
+                    </div>
+                </div>
+                <div class="col-8" id="filtering-col">
+                    <div class="card-header fullwidth" id="filtering-cardheader">
+                        <p>Filtering</p>
+                    </div>
+                    <input type="checkbox" id="filter-multipleprices-checkbox" name="multiple-prices" value="Multiple prices">Multiple prices<br>
+                </div>
+            </div>
+            <div class="row halfheight" id="map-row">
+                <div id="map-case" class="col-12 fullheight">
+                    <div id="api-map-holder" class="fullheight card-body">
+                        <div id="actual-map" class="fullheight card"></div>
+                    </div>
+                    <div id="embedded-map-holder" class="fullheight fullwidth card-body"></div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="row halfheight">
-        <div id="map-case" class="col-10 fullheight">
-            <div id="api-map-holder" class="fullheight card-body">
-                <div id="actual-map" class="fullheight card"></div>
-            </div>
-            <div id="embedded-map-holder" class="fullheight fullwidth card-body"></div>
-        </div>
-        <div class="col-2">
-            <select id="pricelist" multiple="multiple" class="fullheight    " readonly>
-
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card-header">
-                <p>Districts</p>
-            </div>
-            <div id="district-list" class="card-body"></div>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-3">
-            <div class="card-header">
-                <a class="btn" data-toggle="collapse" href="#db-controls"
-                   aria-expanded="false" aria-controls="db-controls">Database test controls</a>
+            <div class="row" id="details-header-row">
+                <div class="card-header fullwidth">
+                    <p>Details</p>
+                </div>
             </div>
-            <div id="db-controls" class="collapse card-body">
-                <p class="">This is some random text about my project</p>
-                <a href="#" id="dbtestfill" class="btn btn-default btn-lg btn-primary" role="button">Fill db test
-                    data</a>
-                <input id="dbgetall" type="button" value="Get all data" class="btn btn-info">
-                <button type="submit" class="btn btn-danger">Danger button</button>
+            <div class="row" id="details-card-row">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <p> Address:</p>
+                            <input id="fullstreetname" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="pricelist-row">
+                <select id="pricelist" multiple="multiple" class="fullheight" size="20" readonly>
+
+                </select>
             </div>
         </div>
     </div>
-    <!--    <iframe width="600" height="450" frameborder="0" style="border:0"-->
-    <!--            src="https://www.google.com/maps/embed/v1/place?q=Keraniganj%2C%20Bangladesh&key=AIzaSyD6-rOeIyOT0SDVyM3LzqVrG2AS9HhnGi0" allowfullscreen></iframe>-->
-
-
 </div>
 
 
 <script src="src/districts.js" async defer></script>
 <script src="src/support.js" async defer></script>
 <script src="src/property-list.js" async defer></script>
-<script src="src/db-controls.js" async defer></script>
+<script src="src/filtering.js" async defer></script>
 <script src="src/maps-api.js" async defer></script>
 <script src="src/main.js" async defer></script>
 <script src="https://maps.googleapis.com/maps/api/js?
