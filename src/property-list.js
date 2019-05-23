@@ -64,7 +64,9 @@ showPropertyInfo = () => {
         let optionElement = document.createElement('option');
         let dt = (price['datetime'])+'';
         dt = dt.split(',');
-        let datetimeString = dt[0]+"-"+dt[1]+"-"+dt[2]+" "+dt[3]+":"+dt[4];
+        let datetimeString = dt[0]+"-"+
+            dt[1].padStart(2,0)+"-"+dt[2].padStart(2,0)+" "+
+            dt[3].padStart(2,0)+":"+dt[4].padStart(2,0);
         let pricestring = price['pricehuf'] / 1000000;
         pricestring = pricestring + '' + "M Ft";
         optionElement.text = datetimeString + ' -> ' + pricestring;
