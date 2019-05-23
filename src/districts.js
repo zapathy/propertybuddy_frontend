@@ -3,7 +3,7 @@ handleDistricts = () => {
 };
 
 populateDisctricts = () => {
-    let districtList = document.getElementById('district-list');
+    let districtList = document.getElementById('districts-list');
     let i;
     for (i=1; i <= 23; i++) {
         let roman = romanize(i);

@@ -1,5 +1,5 @@
 window.onload = () => {
-    createDbControlEventListeners();
+    createFilteringEventListeners();
     handlePropertyList();
     handleDistricts();
 };

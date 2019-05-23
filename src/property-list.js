@@ -1,5 +1,6 @@
 var propertyData;
 var selectedProperty;
+var filteredProperties;
 
 handlePropertyList = () => {
     getPropertyData();
@@ -16,13 +17,15 @@ getPropertyData = () => {
         })
         .then(json => {
             propertyData = json;
+            filteredProperties = propertyData;
             populatePropertyList();
         })
 };
 
 populatePropertyList = () => {
     let propertyListElement = document.getElementById('propertylist');
-    propertyData.forEach(property => {
+    propertyListElement.innerHTML='';
+    filteredProperties.forEach(property => {
         let optionElement = document.createElement('option');
         let streetnamestring = romanize(property['district']) + ' .ker ';
         if (property['streetname'] != null) {
@@ -48,8 +51,6 @@ selectPropertyFromList = () => {
 };
 
 showPropertyInfo = () => {
-    console.log(selectedProperty);
-    document.getElementById('propertyid').value = selectedProperty['id'];
     let streetnamestring = romanize(selectedProperty['district']) + ' .ker ';
     if (selectedProperty['streetname'] != null) {
         streetnamestring += selectedProperty['streetname'] + ' ' + selectedProperty['streetsuffix'];
@@ -59,9 +60,14 @@ showPropertyInfo = () => {
     let pricelist = document.getElementById('pricelist');
     pricelist.innerHTML = '';
     document.getElementById('fullstreetname').value = streetnamestring;
-    for (price of selectedProperty['pricehistory']) {
+    for (let price of selectedProperty['pricehistory']) {
         let optionElement = document.createElement('option');
-        optionElement.text = price['datetime'] + ' - ' + price['pricehuf'];
+        let dt = (price['datetime'])+'';
+        dt = dt.split(',');
+        let datetimeString = dt[0]+"-"+dt[1]+"-"+dt[2]+" "+dt[3]+":"+dt[4];
+        let pricestring = price['pricehuf'] / 1000000;
+        pricestring = pricestring + '' + "M Ft";
+        optionElement.text = datetimeString + ' -> ' + pricestring;
         pricelist.appendChild(optionElement);
     }
     let address = 'Budapest ' + document.getElementById('fullstreetname').value;
@@ -75,8 +81,12 @@ document.getElementById('propertylistvalue').addEventListener("keyup", function 
     }
 });
 
-document.getElementById('showpropertyinfo').onclick = () => {
-    selectPropertyFromList();
+document.getElementById('propertylistvalue').onclick = () => {
+    console.log("asdfasdfasdfsad");
+    document.getElementById('propertylistvalue').value = '';
 };
 
 
+document.getElementById('showpropertyinfo').onclick = () => {
+    selectPropertyFromList();
+};
